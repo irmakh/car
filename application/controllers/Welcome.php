@@ -137,7 +137,7 @@ class Welcome extends CI_Controller {
 
 	public function parsecars(){
 		echo 'Getting Raw Data From DB! '.PHP_EOL;
-		$query = $this->db->query("SELECT * FROM rawhtml WHERE type ='detail' AND is_deleted = 0");
+		$query = $this->db->query("SELECT * FROM rawhtml WHERE type ='detail'");
 		$specs = [];
 		echo 'Done! '.PHP_EOL;
 

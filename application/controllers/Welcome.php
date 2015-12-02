@@ -243,7 +243,8 @@ class Welcome extends CI_Controller {
 
 		$query = $this->db->query("SELECT id,name FROM cars where id>186 ORDER BY id ASC LIMIT 1,1");
 		$client = new Client();
-		$listingUrl = 'http://www.ebay.co.uk/sch/i.html?_nkw='; //http://www.ebay.co.uk/sch/i.html?_nkw=Honda+Civic+1.8A&rt=nc&LH_BIN=1
+		$listingUrl = 'http://www.ebay.co.uk/sch/i.html?LH_PrefLoc=1&rt=nc&_mPrRngCbx=1&_udlo=3000&_udhi&_nkw='; 
+//http://www.ebay.co.uk/sch/i.html?_nkw=Honda+Civic+1.8A+in+cars&rt=nc&LH_BIN=1
 		foreach($query->result() as $row) {
 
 			$url =  $listingUrl.preg_replace('/ /','+',$row->name).'&rt=nc&LH_BIN=1&_sacat=9800&LH_PrefLoc=1';
@@ -263,17 +264,17 @@ class Welcome extends CI_Controller {
 			} else {
 
 				$ukprice = strip_tags(preg_replace('/£/','',$html->find("li.prc span",0)));
-				$ukprice += strip_tags(preg_replace('/£/','',$html->find("li.prc span",1)));
-				$ukprice += strip_tags(preg_replace('/£/','',$html->find("li.prc span",2)));
-				$ukprice += strip_tags(preg_replace('/£/','',$html->find("li.prc span",3)));
-				$ukprice += strip_tags(preg_replace('/£/','',$html->find("li.prc span",4)));
-				$ukprice += strip_tags(preg_replace('/£/','',$html->find("li.prc span",5)));
+				//$ukprice += strip_tags(preg_replace('/£/','',$html->find("li.prc span",1)));
+				//$ukprice += strip_tags(preg_replace('/£/','',$html->find("li.prc span",2)));
+				//$ukprice += strip_tags(preg_replace('/£/','',$html->find("li.prc span",3)));
+				//$ukprice += strip_tags(preg_replace('/£/','',$html->find("li.prc span",4)));
+				//$ukprice += strip_tags(preg_replace('/£/','',$html->find("li.prc span",5)));
 
-				$ukprice = $ukprice/6;
-				if(preg_replace('/£/','',$ukprice) < 1000 )
-				{
-					$ukprice = strip_tags($html->find("li.prc span",1));
-				}
+				//$ukprice = $ukprice/6;
+				//if(preg_replace('/£/','',$ukprice) < 3000 )
+				//{
+				//	$ukprice = strip_tags($html->find("li.prc span",1));
+				//}
 			}
 
 
